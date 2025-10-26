@@ -20,8 +20,9 @@
 
 ## Установка и запуск
 
-### 1. Клонируй репозиторий
 git clone https://github.com/PavelZinovyev/find-lost-pet.git
+
+yarn dev
 
 Приложение будет доступно по адресу:
 http://localhost:3000
