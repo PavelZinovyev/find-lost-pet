@@ -22,7 +22,6 @@
 
 ### 1. Клонируй репозиторий
 git clone https://github.com/PavelZinovyev/find-lost-pet.git
-cd find-lost-pet
 
 Приложение будет доступно по адресу:
 👉 http://localhost:3000
