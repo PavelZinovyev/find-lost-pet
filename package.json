@@ -6,19 +6,27 @@
     "dev": "next dev --webpack",
     "build": "next build --webpack",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "dev:server": "ts-node src/server/app.ts"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.90.5",
     "axios": "^1.12.2",
+    "express": "^5.1.0",
     "maplibre-gl": "^5.10.0",
     "next": "16.0.0",
+    "pg": "^8.16.3",
+    "pg-hstore": "^2.3.4",
     "react": "19.2.0",
     "react-dom": "19.2.0",
+    "sass": "^1.93.3",
+    "sequelize": "^6.37.7",
     "zustand": "^5.0.8"
   },
   "devDependencies": {
     "@types/maplibre-gl": "^1.14.0",
+    "@types/express": "^5.0.5",
+    "ts-node": "^10.9.2",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
