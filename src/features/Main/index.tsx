@@ -1,18 +1,43 @@
-'use client';
-
-import dynamic from 'next/dynamic';
 import styles from './styles.module.scss';
+import { CreatePostForm } from '../CreatePostForm';
+import { Post } from '@/shared/components/Post';
+import { PostsFilter } from '../PostsFilter';
+import { PostProps } from '@/types/Post';
 
-const Map = dynamic(() => import('../../features/Map'), { ssr: false });
+interface MainProps {
+  type: PostProps['type'] | 'all';
+}
 
-const Main = () => {
+export const Main = async ({ type }: MainProps) => {
+  console.log('Server type in Main:', type);
+
+  const url = new URL('http://localhost:4000/posts');
+  if (type !== 'all') {
+    url.searchParams.set('type', type);
+  }
+
+  const res = await fetch(url.toString(), { next: { revalidate: 60 } });
+  const posts: PostProps[] = await res.json();
+
+  console.log('posts->', posts);
+
   return (
-    <main className={styles.page}>
+    <main className={styles.root}>
       <header className={styles.header}>
         <h1>Find Lost Pet</h1>
       </header>
-      <section className={styles.mapSection}>{/* <Map /> */}</section>
+      <section>
+        <CreatePostForm />
+      </section>
+      <section>
+        <h2 className={styles.title}>Посты</h2>
+        <PostsFilter />
+        <div className={styles.posts}>
+          {posts.map((post, idx) => (
+            <Post key={idx} {...post} />
+          ))}
+        </div>
+      </section>
     </main>
   );
 };
-export default Main;
