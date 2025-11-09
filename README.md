@@ -1,4 +1,3 @@
-
 # Find Lost Pet
 
 Веб-приложение для поиска и помощи в возвращении потерявшихся животных.  
@@ -9,12 +8,12 @@
 
 ## Стек технологий
 
-- **Next.js** — фреймворк для SSR и SSG  
-- **TypeScript** — типизация 
-- **Zustand** — управление состоянием  
-- **React Query (TanStack Query)** — работа с серверными данными и кэширование  
-- **MapLibre GL / React-Map-GL** — интерактивная карта  
-- **Axios** — HTTP-клиент  
+- **Next.js** — фреймворк для SSR и SSG
+- **TypeScript** — типизация
+- **Zustand** — управление состоянием
+- **React Query (TanStack Query)** — работа с серверными данными и кэширование
+- **MapLibre GL / React-Map-GL** — интерактивная карта
+- **Axios** — HTTP-клиент
 
 ---
 
@@ -22,7 +21,8 @@
 
 git clone https://github.com/PavelZinovyev/find-lost-pet.git
 
-yarn dev
+yarn dev - запуск прилы
+yarn dev:server - запуск api сервера
 
 Приложение будет доступно по адресу:
 http://localhost:3000
