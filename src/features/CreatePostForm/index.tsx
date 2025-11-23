@@ -20,13 +20,26 @@ export const CreatePostForm = () => {
     const { title, description, latitude, longitude, type } = form;
 
     e.preventDefault();
-    createPost({
-      title,
-      description,
-      latitude,
-      longitude,
-      type,
-    });
+    createPost(
+      {
+        title,
+        description,
+        latitude,
+        longitude,
+        type,
+      },
+      {
+        onSuccess: () => {
+          setForm({
+            title: '',
+            description: '',
+            latitude: '',
+            longitude: '',
+            type: 'lost',
+          });
+        },
+      }
+    );
   };
 
   return (

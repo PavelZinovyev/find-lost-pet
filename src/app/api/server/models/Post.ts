@@ -10,4 +10,12 @@ export const Post = sequelize.define('Post', {
     type: DataTypes.ENUM('lost', 'found'),
     allowNull: false,
   },
+  userId: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    references: {
+      model: 'Users', // Используем строковое имя таблицы, чтобы избежать циклической зависимости
+      key: 'id',
+    },
+  },
 });

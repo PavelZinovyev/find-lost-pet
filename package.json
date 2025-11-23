@@ -7,13 +7,15 @@
     "build": "next build --webpack",
     "start": "next start",
     "lint": "eslint",
-    "dev:server": "ts-node src/server/app.ts"
+    "dev:server": "ts-node src/app/api/server/app.ts"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.90.5",
     "axios": "^1.12.2",
+    "bcryptjs": "^3.0.3",
     "cors": "^2.8.5",
     "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
     "maplibre-gl": "^5.10.0",
     "next": "16.0.0",
     "pg": "^8.16.3",
@@ -25,8 +27,10 @@
     "zustand": "^5.0.8"
   },
   "devDependencies": {
+    "@types/bcryptjs": "^3.0.0",
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.5",
+    "@types/jsonwebtoken": "^9.0.10",
     "@types/maplibre-gl": "^1.14.0",
     "@types/node": "^24.10.0",
     "@types/react": "^19",

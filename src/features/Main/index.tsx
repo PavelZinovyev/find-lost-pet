@@ -5,22 +5,11 @@ import { PostsFilter } from '../PostsFilter';
 import { PostProps } from '@/types/Post';
 
 interface MainProps {
+  posts: PostProps[];
   type: PostProps['type'] | 'all';
 }
 
-export const Main = async ({ type }: MainProps) => {
-  console.log('Server type in Main:', type);
-
-  const url = new URL('http://localhost:4000/posts');
-  if (type !== 'all') {
-    url.searchParams.set('type', type);
-  }
-
-  const res = await fetch(url.toString(), { next: { revalidate: 60 } });
-  const posts: PostProps[] = await res.json();
-
-  console.log('posts->', posts);
-
+export const Main = ({ posts, type }: MainProps) => {
   return (
     <main className={styles.root}>
       <header className={styles.header}>

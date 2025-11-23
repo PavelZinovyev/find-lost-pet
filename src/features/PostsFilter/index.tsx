@@ -1,6 +1,5 @@
 // features/PostsFilter.tsx
-'use client';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/router';
 import styles from './styles.module.scss';
 import { PostProps } from '@/types/Post';
 
@@ -11,8 +10,7 @@ const TYPES: { label: string; value: PostProps['type'] }[] = [
 
 export const PostsFilter = () => {
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const currentType = searchParams.get('type') ?? 'all';
+  const currentType = (router.query.type as string) || 'all';
 
   const handleChange = (type: PostProps['type'] | 'all') => {
     const params = new URLSearchParams();

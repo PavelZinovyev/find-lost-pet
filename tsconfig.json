@@ -2,11 +2,7 @@
   "compilerOptions": {
     "target": "ES2022",
     "outDir": "dist",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "module": "CommonJS",
     "skipLibCheck": true,
@@ -23,9 +19,7 @@
       }
     ],
     "paths": {
-      "@/*": [
-        "./src/*"
-      ]
+      "@/*": ["./src/*"]
     },
     "moduleResolution": "node"
   },
@@ -36,11 +30,9 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
     "**/*.mts",
-    "src/server/app.js",
-    "src/server/index.js",
-    "src/server/models/Post.js"
+    "src/app/api/server/app.ts",
+    "src/app/api/server/index.ts",
+    "src/app/api/server/models/Post.ts"
   ],
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }
