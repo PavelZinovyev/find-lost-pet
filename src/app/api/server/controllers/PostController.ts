@@ -2,6 +2,11 @@ import { Request, Response } from 'express';
 import { WhereOptions } from 'sequelize';
 import { Post } from '../models/Post';
 
+// Расширяем тип Request для добавления userId
+interface RequestWithUserId extends Request {
+  userId?: number;
+}
+
 export class PostController {
   static async getPosts(req: Request, res: Response): Promise<void> {
     try {
@@ -22,10 +27,12 @@ export class PostController {
     }
   }
 
-  static async createPost(req: Request, res: Response): Promise<void> {
+  static async createPost(req: RequestWithUserId, res: Response): Promise<void> {
     try {
-      console.log('📝 POST /posts - Request received');
+      console.log('📝 POST /posts - Request received in controller');
       console.log('Request body:', req.body);
+      console.log('Request headers:', req.headers);
+      console.log('req.userId at start:', req.userId);
 
       const { title, description, latitude, longitude, type } = req.body;
 
@@ -41,14 +48,15 @@ export class PostController {
         return;
       }
 
-      const userId = req.userId;
-
-      if (!userId) {
-        console.log('❌ User ID not found in request');
-        res.status(401).json({ error: 'Unauthorized' });
+      // Проверяем, что userId установлен в authMiddleware
+      console.log('req.userId:', req.userId);
+      if (!req.userId) {
+        console.log('❌ User ID not found in request - authMiddleware may have failed');
+        res.status(401).json({ error: 'Unauthorized: User ID not found' });
         return;
       }
 
+      const userId = req.userId;
       console.log('Creating post with userId:', userId);
 
       const newPost = await Post.create({
